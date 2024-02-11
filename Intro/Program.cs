@@ -1,6 +1,7 @@
 ﻿
 // Console 
 using Intro.Business;
+using Intro.DataAccess.Concretes;
 using Intro.Entities;
 
 //Console.WriteLine("Hello, World!");
@@ -65,16 +66,53 @@ using Intro.Entities;
 //    Console.WriteLine(courses[i].Name + " / " + courses[i].Price);
 //}
 
-CourseManager courseManager = new();
+CourseManager courseManager = new CourseManager(new CourseDal());
 
-Course[] courses2 = courseManager.GetAll();
+List<Course> courses2 = courseManager.GetAll();
 
-for (int i = 0; i < courses2.Length; i++)
+for (int i = 0; i < courses2.Count; i++)
 {
     Console.WriteLine(courses2[i].Name + " / " + courses2[i].Price);
 }
 
 Console.WriteLine("Kod bitti.");
+
+
+IndividualCustomer customer1 = new IndividualCustomer(); 
+customer1.Id = 1;
+customer1.NationalIdentity = "12345678911";
+customer1.FirstName = "Emre";
+customer1.LastName = "Karayiğit";
+customer1.CustomerNumber = "123456";
+
+
+IndividualCustomer customer2 = new IndividualCustomer();
+customer2.Id = 2;
+customer2.NationalIdentity = "54875875487";
+customer2.FirstName = "Özgür";
+customer2.LastName = "Atılgan";
+customer2.CustomerNumber = "123457";
+
+CorporateCustomer customer3 = new CorporateCustomer()
+{
+    Id = 3,
+    Name = "Kodlamaio",
+    CustomerNumber = "654778",
+    TaxNumber = "2124577899"
+};
+
+CorporateCustomer customer4 = new CorporateCustomer()
+{
+    Id = 3,
+    Name = "Abc",
+    CustomerNumber = "654779",
+    TaxNumber = "2124647899"
+};
+
+
+
+
+
 
 
 
